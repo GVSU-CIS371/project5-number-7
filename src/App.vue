@@ -13,6 +13,8 @@
           <component :is="Component" />
         </transition>
       </router-view>
+
+      <StoreItem></StoreItem>
     </v-main>
 
     <v-footer color="primary" app>
@@ -23,6 +25,9 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import StoreItem from "./components/StoreItem.vue";
+
+
 
 const links = ref([
   { text: "Home", to: "/", icon: "mdi-home" },
