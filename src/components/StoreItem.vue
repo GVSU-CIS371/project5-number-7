@@ -8,59 +8,92 @@
 
 
     <v-card-item class="ml-4 mt-4 mb-" >
-      <v-card-title class="font-weight-bold">Gamer's Delight Laptop</v-card-title>
+      <v-card-title class="font-weight-bold">{{product.data.name}}</v-card-title>
     </v-card-item>
 
 
     <v-card-item class="ml-4 mt-n2 px-4">
-      <span><v-icon
+      <span 
+      ><v-icon v-if="product.data.rating > 0"
         icon="mdi mdi-star"
         size="small"
         color="#ffd700"
-      </v-icon><v-icon
-        icon="mdi mdi-star"
-        size="small"
-        color="#ffd700"
-      </v-icon><v-icon
-        icon="mdi mdi-star"
-        size="small"
-        color="#ffd700"
-      </v-icon><v-icon
-        icon="mdi mdi-star"
-        size="small"
-        color="#ffd700"
-      </v-icon><v-icon
+      </v-icon>
+      <v-icon  v-if="product.data.rating == 0"
         icon="mdi mdi-star-outline"
         size="small"
         color="#ffd700"
+      </v-icon>
+      <v-icon v-if="product.data.rating > 1"
+        icon="mdi mdi-star"
+        size="small"
+        color="#ffd700"
+      </v-icon>
+      <v-icon  v-if="product.data.rating < 2"
+        icon="mdi mdi-star-outline"
+        size="small"
+        color="#ffd700"
+      </v-icon>
+      <v-icon v-if="product.data.rating > 2"
+        icon="mdi mdi-star"
+        size="small"
+        color="#ffd700"
+      </v-icon>
+      <v-icon  v-if="product.data.rating < 3"
+        icon="mdi mdi-star-outline"
+        size="small"
+        color="#ffd700"
+      </v-icon>
+      <v-icon v-if="product.data.rating > 3"
+        icon="mdi mdi-star"
+        size="small"
+        color="#ffd700"
+      </v-icon>
+      <v-icon  v-if="product.data.rating < 4"
+        icon="mdi mdi-star-outline"
+        size="small"
+        color="#ffd700"
+      </v-icon>
+      <v-icon v-if="Math.floor(product.data.rating) > 4"
+        icon="mdi mdi-star"
+        size="small"
+        color="#ffd700"
       </v-icon></span>  
+      <v-icon  v-if="product.data.rating < 5"
+        icon="mdi mdi-star-outline"
+        size="small"
+        color="#ffd700"
+      </v-icon>
       
 
       <span class="px-6"><v-icon
         icon="mdi mdi-cash"
         size="large"
         color="green"
-      </v-icon> 1200</span> 
+      </v-icon>{{product.data.price}}</span> 
 
 
        <span><v-icon
         icon=" mdi mdi-package-variant-closed"
         size="large"
         color="blue"
-      </v-icon>10</span>
+      </v-icon>{{product.data.stock}}</span>
     </v-card-item>
     
 
     <v-card-item class="ma-4">
       <v-img
-        src="https://m.media-amazon.com/images/I/31TcnQiBTpL._AC_UF894,1000_QL80_.jpg"
+      :width="400"
+      :height="200"
+        :src=product.data.image
+    
       >
       </v-img>
     </v-card-item>
 
-
-    <v-card-item class="mx-14 pb-14" >
-      A powerful gaming laptop with top-tier graphics and performance for immersive gaming experiences.
+  
+    <v-card-item class="mx-4 pb-8 text-body-2">
+      {{product.data.description}}
     </v-card-item>
    
  
@@ -78,6 +111,15 @@
 
 
 <script lang="ts" setup>
+import { ProductDoc } from '../types/product';
+
+//import {ref} from "vue";
+
+type Props = {
+  product: ProductDoc
+}
+
+defineProps<Props>();
 
 
 

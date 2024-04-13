@@ -1,15 +1,16 @@
 <template>
   <!-- your answer -->
-  <v-container class="bg-surface-variant">
-    <v-row>
+  <v-container fluid>
+    <v-row no-gutters>
       <v-col
-        v-for="n in 12"
+        v-for="(n, i) in prod.products.length"
         :key="n"
-        cols="4"
+        cols="3"
       >
-        <v-sheet class="ma-2 pa-2">
-          One of three columns
-        </v-sheet>
+      <StoreItem
+       :product=prod.products[i]
+      ></StoreItem>
+       
       </v-col>
     </v-row>
   </v-container>
@@ -17,6 +18,15 @@
 
 <script lang="ts" setup>
 // your answer
+import StoreItem from './StoreItem.vue';
+
+
+import { useProductStore } from '../stores/ProductStore';
+
+const prod = useProductStore();
+prod.init()
+
+
 
 
 
